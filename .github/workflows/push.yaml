@@ -17,10 +17,10 @@ jobs:
       with: 
         username: ${{ github.actor }}
         password: ${{ github.events.inputs.token }}
-        registry: docker.pkg.github.com
+        registry: ghcr.io
     - name: Build and Push Image
       uses: docker/build-push-action@v2
       with:
         context: .
         push: true
-        tags: rem1776/fre-nctools-base:latest
+        tags: "rem1776/fre-nctools-container/fre-nctools-base:1.0"
