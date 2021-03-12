@@ -1,6 +1,11 @@
 ## must be run manually to push image
 name: Build and Push Image
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version number for the pushed image"
+        required: true
 jobs:
   push_image:
     runs-on: ubuntu-latest
@@ -18,4 +23,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: "docker.pkg.github.com/rem1776/fre-nctools-container/fre-nctools-base:1.0"
+        tags: "docker.pkg.github.com/rem1776/fre-nctools-container/fre-nctools-base:${{ github.event.inputs.version }}"
